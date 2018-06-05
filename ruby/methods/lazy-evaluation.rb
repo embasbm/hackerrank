@@ -1,16 +1,11 @@
 require 'pry'
+require 'prime'
 
-def prime(n)
-  (2..n/2).none?{|i| n % i == 0}
+
+is_palindrome = -> (x) do
+  x.to_s == x.to_s.reverse
 end
 
-def palindrome(n)
-  n.to_s == n.to_s.reverse
-end
+n = gets.chomp.to_i
 
-solution = -> (n) do
-  2.upto(Float::INFINITY).lazy.select { |e| prime(e) && palindrome(e) }.first(n)
-end
-
-a = gets.chomp
-p solution.(a.to_i)
+p 2.upto(Float::INFINITY).lazy.select {|n| is_palindrome.(n) && Prime.prime?(n) }.first(n)
