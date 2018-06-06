@@ -7,7 +7,7 @@ square      = -> (n) { n**2 }
 plus_one    = -> (n) { n+1 }
 
 # Write a lambda which takes an integer and multiply it by 2
-into_2      = -> (n) { n+2 }
+into_2      = -> (n) { n*2 }
 
 # Write a lambda which takes two integers and adds them
 adder       = -> (x, y) { x+y }
