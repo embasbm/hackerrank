@@ -17,22 +17,10 @@ def breakingRecords(scores)
       min[index] = 0
       max[index] = 0
     else
-      if score > highest_scores.max
-        highest_scores[index] = score
-        lowest_scores[index] = lowest_scores[index-1]
-        min[index] = min[index-1]
-        max[index] = max[index-1] + 1
-      elsif score < lowest_scores.min
-        highest_scores[index] = lowest_scores[index-1]
-        lowest_scores[index] = score
-        min[index] = min[index-1] + 1
-        max[index] = max[index-1]
-      else
-        highest_scores[index] = highest_scores[index-1]
-        lowest_scores[index] = lowest_scores[index-1]
-        min[index] = min[index-1]
-        max[index] = max[index-1]
-      end
+      min[index]            = score > highest_scores.max ? min[index-1] : score < lowest_scores.min ? min[index-1] + 1 : min[index-1]
+      max[index]            = score > highest_scores.max ? max[index-1] + 1 : score < lowest_scores.min ? max[index-1] : max[index-1]
+      highest_scores[index] = score > highest_scores.max ? score : score < lowest_scores.min ? lowest_scores[index-1] : highest_scores[index-1]
+      lowest_scores[index]  = score > highest_scores.max ? lowest_scores[index-1] : (score < lowest_scores.min ? score : lowest_scores[index-1])
     end
   end
   [max.last, min.last]
