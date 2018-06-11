@@ -12,6 +12,8 @@ def solve(year)
       else
         28
       end
+    elsif year == 1918
+      15
     else # => Julian calendar
       if year % 4 == 0
         29
@@ -19,6 +21,7 @@ def solve(year)
         28
       end
     end
+
   year_days = {
     1 => 31,
     2 => feb_days,
