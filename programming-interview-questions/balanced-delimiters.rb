@@ -1,3 +1,4 @@
+require 'pry'
 def parse_delimiters(delimiters)
   my_array = []
   delimiters.each_char do |c|
@@ -24,6 +25,8 @@ end
 
 def match?(a, b)
   a.split('-').last == b.split('-').last
+rescue
+    return false
 end
 
 def balanced?(delimiters)
